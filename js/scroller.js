@@ -1,10 +1,9 @@
     'use strict';
-    var SYK = {}
+    var SYK = {};
     SYK.rotate = function(banner, newframe) {
         banner.removeClass('frame1 frame2 frame3');
         banner.addClass(newframe);
-    }
-
+    };
     $(function() {
         $('.adScroller').each(function() {
             var div = $(this);
@@ -17,14 +16,9 @@
                 clearInterval(startScroll);
             });
         });
-        $('img.restart').each(function() {
-            var img = $(this);
-            var src = img.attr('src');
-            img.attr('src', src + '?' + Date.now());
-        });
         for (var i = 1; i <= 3; i++) {
             $('.sykbanner_image').each(function() {
-                var banner = this
+                var banner = this;
                 window.setTimeout(function() {
                     SYK.rotate($(banner), 'frame2');
                 }, 3000 + 15000 * (i - 1));
