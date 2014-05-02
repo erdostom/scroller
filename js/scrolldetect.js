@@ -1,4 +1,6 @@
+'use strict';
 var SYK = {
+    playing_animations: [],
     updateScroll: function() {
         SYK.updateScrollVariables();
         SYK.logNewItems();
@@ -7,20 +9,30 @@ var SYK = {
         SYK.scrollTop = $(window).scrollTop()
         SYK.scrollBottom = SYK.scrollTop + $(window).height()
     },
+    itemInViewport: function($item) {
+        return $item.offset().top < SYK.scrollBottom
+    },
+    itemNotPlayedYet: function($item) {
+        return $.inArray($item.attr('id'), SYK.playing_animations) == -1
+    },
+    shouldPlayItem: function($item) {
+        return SYK.itemInViewport($item) && SYK.itemNotPlayedYet($item)
+    },
+    playItem: function($item) {
+        console.log("now playing #" + $item.attr('id'))
+    },
     logNewItems: function() {
         $('.rectangle').each(function() {
             var that = $(this);
-            if (that.offset().top < SYK.scrollBottom && $.inArray(that.attr('id'), SYK.playing_animations) == -1) {
+            if (SYK.shouldPlayItem(that)) {
                 SYK.playing_animations.push(that.attr('id'))
-                console.log("now playing #" + that.attr('id'))
+                SYK.playItem(that);
             }
         });
     },
-    playing_animations: []
 };
-
 $(function() {
-        SYK.updateScroll();
+    SYK.updateScroll();
     $(window).scroll(function() {
         SYK.updateScroll();
     })
