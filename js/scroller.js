@@ -4,6 +4,11 @@
         banner.removeClass('frame1 frame2 frame3');
         banner.addClass(newframe);
     };
+    SYK.loopCount = 3;
+    SYK.frame1Length = 1000 // milliseconds
+    SYK.frame2Length = 2000 // milliseconds
+    SYK.frame3Length = 2000 // milliseconds
+    SYK.loopLength = SYK.frame1Length + SYK.frame2Length + SYK.frame3Length
     $(function() {
         $('.adScroller').each(function() {
             var div = $(this);
@@ -16,19 +21,19 @@
                 clearInterval(startScroll);
             });
         });
-        for (var i = 1; i <= 3; i++) {
+        for (var i = 1; i <= SYK.loopCount; i++) {
             $('.sykbanner_image').each(function() {
                 var banner = this;
                 window.setTimeout(function() {
                     SYK.rotate($(banner), 'frame2');
-                }, 3000 + 15000 * (i - 1));
+                }, SYK.frame1Length + SYK.loopLength * (i - 1));
                 window.setTimeout(function() {
                     SYK.rotate($(banner), 'frame3');
-                }, 10000 + 15000 * (i - 1));
+                }, SYK.frame1Length + SYK.frame2Length + SYK.loopLength * (i - 1));
                 if (i < 3) {
                     window.setTimeout(function() {
                         SYK.rotate($(banner), 'frame1');
-                    }, 15000 + 15000 * (i - 1));
+                    }, SYK.loopLength + SYK.loopLength * (i - 1));
                 }
             });
         }
