@@ -1,34 +1,25 @@
-    .boxy {
-        margin: 20px;
+.boxy {
+        margin: 0 -10px;
     }
     .adScroller {
         overflow-y: scroll;
         background-color: #fff;
         border: 1px solid gray;
     }
-    .adscroller > p, h4 {
+    .adScroller > p, h4 {
         padding: 0 10px 0 10px;
     }
     p {
         font-size: 11px;
     }
-    #longBanner {
-        width: 728px;
-        height: 91px;
-        background-color: purple;
-    }
-    #longBanner > .adScroller {
-        width: 201px;
-        height: 89px;
-        float: right;
-    }
+    
     .superLongBanner {
-        width: 972px;
-        height:91px;
+        width: 970px;
+        height:90px;
         position: relative;
     }
     .superLongBanner > .adScroller {
-        width: 201px;
+        width: 200px;
         height: 88px;
         z-index: 99;
         position: absolute;
@@ -39,35 +30,14 @@
     .superLongBanner > img {
         z-index: 1;
     }
-    #boxBanner {
-        width: 300px;
-        height: 250px;
-        background-color: purple;
-    }
-    #boxBanner > .adscroller {
-        width: 298px;
-        height: 50px;
-        position: relative;
-        bottom: -198px;
-    }
-    #skyscraperBanner {
-        width: 300px;
-        height: 600px;
-        background-color: purple;
-    }
-    #skyscraperBanner > .adscroller {
-        width: 298px;
-        height: 70px;
-        position: relative;
-        bottom: -528px;
-    }
+    
     .sykbanner_image {
         width: 770px;
         height: 90px;
         background-repeat: no-repeat;
     }
-    .superLongBanner.fred .sykbanner_image {
-        background-image: url(../img/stacked.jpg);
+    .superLongBanner.fred > .sykbanner_image {
+        background-image: url(http://www.makoplasty.com/assets/images/stacked.jpg);
     }
     .frame1 {
     background-position: 0 0;
