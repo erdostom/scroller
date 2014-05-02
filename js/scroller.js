@@ -5,10 +5,10 @@
         banner.addClass(newframe);
     };
     SYK.loopCount = 3;
-    SYK.frame1Length = 1000 // milliseconds
-    SYK.frame2Length = 2000 // milliseconds
-    SYK.frame3Length = 2000 // milliseconds
-    SYK.loopLength = SYK.frame1Length + SYK.frame2Length + SYK.frame3Length
+    SYK.frame1Length = 1000; // milliseconds
+    SYK.frame2Length = 2000; // milliseconds
+    SYK.frame3Length = 2000; // milliseconds
+    SYK.loopLength = SYK.frame1Length + SYK.frame2Length + SYK.frame3Length;
     $(function() {
         $('.adScroller').each(function() {
             var div = $(this);
