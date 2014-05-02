@@ -4,7 +4,7 @@
         banner.removeClass('frame1 frame2 frame3');
         banner.addClass(newframe);
     };
-    SYK.loopCount = 3;
+    SYK.loopCount = 2;
     SYK.frame1Length = 1000; // milliseconds
     SYK.frame2Length = 2000; // milliseconds
     SYK.frame3Length = 2000; // milliseconds
@@ -30,7 +30,7 @@
                 window.setTimeout(function() {
                     SYK.rotate($(banner), 'frame3');
                 }, SYK.frame1Length + SYK.frame2Length + SYK.loopLength * (i - 1));
-                if (i < 3) {
+                if (i < SYK.loopCount) {
                     window.setTimeout(function() {
                         SYK.rotate($(banner), 'frame1');
                     }, SYK.loopLength + SYK.loopLength * (i - 1));
