@@ -1,40 +1,78 @@
-    'use strict';
-    var SYK = {};
-    SYK.rotate = function(banner, newframe) {
+'use strict';
+var SYK = {
+    playing_animations: [],
+    $animations: [],
+    updateScroll: function() {
+        SYK.updateScrollVariables();
+        SYK.logNewItems();
+    },
+    updateScrollVariables: function() {
+        SYK.scrollTop = $(window).scrollTop();
+        SYK.scrollBottom = SYK.scrollTop + $(window).height();
+    },
+    itemInViewport: function($item) {
+        return $item.offset().top < SYK.scrollBottom;
+    },
+    itemNotPlayedYet: function($item) {
+        return $.inArray($item.attr('id'), SYK.playing_animations) == -1;
+    },
+    shouldPlayItem: function($item) {
+        return SYK.itemInViewport($item) && SYK.itemNotPlayedYet($item);
+    },
+    loopImage: function($item) {
+        for (var i = 1; i <= SYK.loopCount; i++) {
+            window.setTimeout(function() {
+                SYK.rotate($item, 'frame2');
+            }, SYK.frame1Length + SYK.loopLength * (i - 1));
+            window.setTimeout(function() {
+                SYK.rotate($item, 'frame3');
+            }, SYK.frame1Length + SYK.frame2Length + SYK.loopLength * (i - 1));
+            if (i < SYK.loopCount) {
+                window.setTimeout(function() {
+                    SYK.rotate($item, 'frame1');
+                }, SYK.loopLength + SYK.loopLength * (i - 1));
+            }
+        }
+    },
+    playItem: function($item) {
+        var $adbox = $item.parent().find('.adScroller');
+        SYK.startScroll($adbox);
+        SYK.loopImage($item);
+    },
+    logNewItems: function() {
+        SYK.$animations.each(function() {
+            var that = $(this);
+            if (SYK.shouldPlayItem(that)) {
+                SYK.playing_animations.push(that.attr('id'));
+                SYK.playItem(that);
+
+            }
+        });
+    },
+    rotate: function(banner, newframe) {
         banner.removeClass('frame1 frame2 frame3');
         banner.addClass(newframe);
-    };
-    SYK.loopCount = 2;
-    SYK.frame1Length = 1000; // milliseconds
-    SYK.frame2Length = 2000; // milliseconds
-    SYK.frame3Length = 2000; // milliseconds
-    SYK.loopLength = SYK.frame1Length + SYK.frame2Length + SYK.frame3Length;
-    $(function() {
-        $('.adScroller').each(function() {
-            var div = $(this);
-            var startScroll = setInterval(function() {
-                var pos = div.scrollTop();
-                div.scrollTop(pos + 2);
-            }, $(this).data('speed'));
+    },
+    startScroll: function($scroller) {
+        var startScroll = setInterval(function() {
+            var pos = $scroller.scrollTop();
+            $scroller.scrollTop(pos + 2);
+        }, $scroller.data('speed'));
 
-            div.mouseover(function() {
-                clearInterval(startScroll);
-            });
+        $scroller.mouseover(function() {
+            clearInterval(startScroll);
         });
-        for (var i = 1; i <= SYK.loopCount; i++) {
-            $('.sykbanner_image').each(function() {
-                var banner = this;
-                window.setTimeout(function() {
-                    SYK.rotate($(banner), 'frame2');
-                }, SYK.frame1Length + SYK.loopLength * (i - 1));
-                window.setTimeout(function() {
-                    SYK.rotate($(banner), 'frame3');
-                }, SYK.frame1Length + SYK.frame2Length + SYK.loopLength * (i - 1));
-                if (i < SYK.loopCount) {
-                    window.setTimeout(function() {
-                        SYK.rotate($(banner), 'frame1');
-                    }, SYK.loopLength + SYK.loopLength * (i - 1));
-                }
-            });
-        }
+    }
+};
+SYK.loopCount = 1;
+SYK.frame1Length = 3000; // milliseconds
+SYK.frame2Length = 7000; // milliseconds
+SYK.frame3Length = 5000; // milliseconds
+SYK.loopLength = SYK.frame1Length + SYK.frame2Length + SYK.frame3Length;
+$(function() {
+    SYK.$animations = $('.sykbanner_image');
+    SYK.updateScroll();
+    $(window).scroll(function() {
+        SYK.updateScroll();
     });
+});
