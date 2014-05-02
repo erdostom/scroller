@@ -1,50 +1,261 @@
-.boxy {
-        margin: 0 -10px;
-    }
-    .adScroller {
-        overflow-y: scroll;
-        background-color: #fff;
-        border: 1px solid gray;
-    }
-    .adScroller > p, h4 {
-        padding: 0 10px 0 10px;
-    }
-    p {
-        font-size: 11px;
-    }
-    
-    .superLongBanner {
-        width: 970px;
-        height:90px;
-        position: relative;
-    }
-    .superLongBanner > .adScroller {
-        width: 200px;
-        height: 88px;
-        z-index: 99;
-        position: absolute;
-        display: inline-block;
-        right: 0;
-        top: 0;
-    }
-    .superLongBanner > img {
-        z-index: 1;
-    }
-    
-    .sykbanner_image {
-        width: 770px;
-        height: 90px;
-        background-repeat: no-repeat;
-    }
-    .superLongBanner.fred > .sykbanner_image {
-        background-image: url(http://www.makoplasty.com/assets/images/stacked.jpg);
-    }
-    .frame1 {
+.adScroller {
+    overflow-y: scroll;
+    background-color: #fff;
+    border: 1px solid gray;
+}
+.adScroller > p, h4 {
+    padding: 0 10px 0 10px;
+}
+p {
+    font-size: 11px;
+}
+.i970x90 {
+    width: 970px;
+    height:90px;
+    position: relative;
+}
+.i970x90 .sykbanner_image {
+    width: 770px;
+    height: 90px;
+    background-repeat: no-repeat;
+}
+.i970x90 > .adScroller {
+    width: 200px;
+    height: 88px;
+    z-index: 99;
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 0;
+}
+.i970x90.fred .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/970x90_stacked_fred.jpg);
+}
+.i970x90.hal > .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/970x90_stacked_hal.jpg);
+}
+.i970x90 .frame1 {
     background-position: 0 0;
-    }
-    .frame2 {
+}
+.i970x90 .frame2 {
     background-position: 0 -90px;
-    }
-    .frame3 {
+}
+.i970x90 .frame3 {
     background-position: 0 -180px;
-    }
+}
+
+
+.i728x270 {
+    width: 728px;
+    height:270px;
+    position: relative;
+}
+.i728x270 .sykbanner_image {
+    width: 537px;
+    height: 270px;
+    background-repeat: no-repeat;
+}
+.i728x270 .adScroller {
+    width: 191px;
+    height: 268px;
+    z-index: 99;
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 0;
+}
+.i728x270.fred .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/728x270_stacked_fred.jpg);
+}
+.i728x270.hal .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/728x270_stacked_hal.jpg);
+}
+.i728x270 .frame1 {
+    background-position: 0 0;
+}
+.i728x270 .frame2 {
+    background-position: 0 -270px;
+}
+.i728x270 .frame3 {
+    background-position: 0 -540px;
+}
+
+.i500x250 {
+    width: 500px;
+    height: 250px;
+    position: relative;
+}
+.i500x250 .sykbanner_image {
+    width: 337px;
+    height: 250px;
+    background-repeat: no-repeat;
+}
+.i500x250 .adScroller {
+    width: 163px;
+    height: 248px;
+    z-index: 99;
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 0;
+}
+.i500x250.fred .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/500x250_stacked_fred.jpg);
+}
+.i500x250.hal .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/500x250_stacked_hal.jpg);
+}
+.i500x250 .frame1 {
+    background-position: 0 0;
+}
+.i500x250 .frame2 {
+    background-position: 0 -250px;
+}
+.i500x250 .frame3 {
+    background-position: 0 -500px;
+}
+
+.i728x90 {
+    width: 728px;
+    height: 90px;
+    position: relative;
+}
+.i728x90 .sykbanner_image {
+    width: 526px;
+    height: 90px;
+    background-repeat: no-repeat;
+}
+.i728x90 .adScroller {
+    width: 202px;
+    height: 88px;
+    z-index: 99;
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 0;
+}
+.i728x90.fred .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/728x90_stacked_fred.jpg);
+}
+.i728x90.hal .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/728x90_stacked_hal.jpg);
+}
+.i728x90 .frame1 {
+    background-position: 0 0;
+}
+.i728x90 .frame2 {
+    background-position: 0 -90px;
+}
+.i728x90 .frame3 {
+    background-position: 0 -180px;
+}
+
+.i300x250 {
+    width: 300px;
+    height: 250px;
+    position: relative;
+}
+.i300x250 .sykbanner_image {
+    width: 300px;
+    height: 197px;
+    background-repeat: no-repeat;
+}
+.i300x250 .adScroller {
+    width: 298px;
+    height: 53px;
+    z-index: 99;
+    position: absolute;
+    display: block;
+    right: 0;
+    bottom: 0;
+}
+.i300x250.fred .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/300x250_stacked_fred.jpg);
+}
+.i300x250.hal .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/300x250_stacked_hal.jpg);
+}
+.i300x250 .frame1 {
+    background-position: 0 0;
+}
+.i300x250 .frame2 {
+    background-position: -300px 0;
+}
+.i300x250 .frame3 {
+    background-position: -600px 0;
+}
+
+.i300x600 {
+    width: 300px;
+    height: 600px;
+    position: relative;
+}
+.i300x600 .sykbanner_image {
+    width: 300px;
+    height: 528px;
+    background-repeat: no-repeat;
+}
+.i300x600 .adScroller {
+    width: 298px;
+    height: 72px;
+    z-index: 99;
+    position: absolute;
+    display: block;
+    right: 0;
+    bottom: 0;
+}
+.i300x600.fred .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/300x600_stacked_fred.jpg);
+}
+.i300x600.hal .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/300x600_stacked_hal.jpg);
+}
+.i300x600 .frame1 {
+    background-position: 0 0;
+}
+.i300x600 .frame2 {
+    background-position: -300px 0;
+}
+.i300x600 .frame3 {
+    background-position: -600px 0;
+}
+
+.i400x600 {
+    width: 400px;
+    height: 600px;
+    position: relative;
+}
+.i400x600 .sykbanner_image {
+    width: 400px;
+    height: 531px;
+    background-repeat: no-repeat;
+}
+.i400x600 .adScroller {
+    width: 398px;
+    height: 69px;
+    z-index: 99;
+    position: absolute;
+    display: block;
+    right: 0;
+    bottom: 0;
+}
+.i400x600.fred .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/400x600_stacked_fred.jpg);
+}
+.i400x600.hal .sykbanner_image {
+    background-image: url(http://www.makoplasty.com/assets/images/pga/400x600_stacked_hal.jpg);
+}
+.i400x600 .frame1 {
+    background-position: 0 0;
+}
+.i400x600 .frame2 {
+    background-position: -400px 0;
+}
+.i400x600 .frame3 {
+    background-position: -800px 0;
+}
+/*DEV ONLY FROM HERE*/
+ .separator {
+    width: 100%;
+    height: 30px;
+}
