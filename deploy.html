@@ -8,7 +8,7 @@
         "use strict";var SYK={conductor:{$animations:[],playing_animations:[],update:function(){SYK.conductor.updateScrollVariables();SYK.conductor.checkForNewItems()},updateScrollVariables:function(){SYK.conductor.scrollTop=$(window).scrollTop();SYK.conductor.scrollBottom=SYK.conductor.scrollTop+$(window).height()},checkForNewItems:function(){SYK.conductor.$animations.each(function(){var e=$(this);if(SYK.conductor.shouldPlayItem(e)){SYK.conductor.playing_animations.push(e.attr("id"));SYK.conductor.playItem(e)}})},shouldPlayItem:function(e){return SYK.conductor.itemInViewport(e)&&SYK.conductor.itemNotPlayedYet(e)},itemInViewport:function(e){return e.offset().top<SYK.conductor.scrollBottom},itemNotPlayedYet:function(e){return $.inArray(e.attr("id"),SYK.conductor.playing_animations)==-1},playItem:function(e){var t=e.parent().find(".adScroller");SYK.disclaimerBox.startScroll(t);SYK.imageAnimator.loopImage(e)}},imageAnimator:{loopCount:1,frame1Length:3e3,frame2Length:7e3,frame3Length:5e3,loopLength:function(){return SYK.imageAnimator.frame1Length+SYK.imageAnimator.frame2Length+SYK.imageAnimator.frame3Length},loopImage:function(e){for(var t=1;t<=SYK.imageAnimator.loopCount;t++){window.setTimeout(function(){SYK.imageAnimator.rotate(e,"frame2")},SYK.imageAnimator.frame1Length+SYK.imageAnimator.loopLength()*(t-1));window.setTimeout(function(){SYK.imageAnimator.rotate(e,"frame3")},SYK.imageAnimator.frame1Length+SYK.imageAnimator.frame2Length+SYK.imageAnimator.loopLength()*(t-1));if(t<SYK.imageAnimator.loopCount){window.setTimeout(function(){SYK.imageAnimator.rotate(e,"frame1")},SYK.imageAnimator.loopLength()+SYK.imageAnimator.loopLength()*(t-1))}}},rotate:function(e,t){e.removeClass("frame1 frame2 frame3");e.addClass(t)}},disclaimerBox:{startScroll:function(e){var t=setInterval(function(){var t=e.scrollTop();e.scrollTop(t+2)},e.data("speed"));e.mouseover(function(){clearInterval(t)})}}};$(function(){SYK.conductor.$animations=$(".sykbanner_image");SYK.conductor.update();$(window).scroll(function(){SYK.conductor.update()});$(window).load(function(){SYK.conductor.update()})})
     </script>
     <style>
-    .adScroller{overflow-y:scroll;background-color:#fff;border:1px solid gray}.adScroller>p,h4{padding:0 10px}p{font-size:11px}.i970x90{width:970px;height:90px;position:relative}.i970x90 .sykbanner_image{width:770px;height:90px;background-repeat:no-repeat}.i970x90>.adScroller{width:200px;height:88px;z-index:99;position:absolute;display:inline-block;right:0;top:0}.i970x90.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/970x90_stacked_fred.jpg)}.i970x90.hal>.sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/970x90_stacked_hal.jpg)}.i970x90 .frame1{background-position:0 0}.i970x90 .frame2{background-position:0 -90px}.i970x90 .frame3{background-position:0 -180px}.i728x270{width:728px;height:270px;position:relative}.i728x270 .sykbanner_image{width:537px;height:270px;background-repeat:no-repeat}.i728x270 .adScroller{width:191px;height:268px;z-index:99;position:absolute;display:inline-block;right:0;top:0}.i728x270.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/728x270_stacked_fred.jpg)}.i728x270.hal .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/728x270_stacked_hal.jpg)}.i728x270 .frame1{background-position:0 0}.i728x270 .frame2{background-position:0 -270px}.i728x270 .frame3{background-position:0 -540px}.i500x250{width:500px;height:250px;position:relative}.i500x250 .sykbanner_image{width:337px;height:250px;background-repeat:no-repeat}.i500x250 .adScroller{width:163px;height:248px;z-index:99;position:absolute;display:inline-block;right:0;top:0}.i500x250.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/500x250_stacked_fred.jpg)}.i500x250.hal .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/500x250_stacked_hal.jpg)}.i500x250 .frame1{background-position:0 0}.i500x250 .frame2{background-position:0 -250px}.i500x250 .frame3{background-position:0 -500px}.i728x90{width:728px;height:90px;position:relative}.i728x90 .sykbanner_image{width:526px;height:90px;background-repeat:no-repeat}.i728x90 .adScroller{width:202px;height:88px;z-index:99;position:absolute;display:inline-block;right:0;top:0}.i728x90.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/728x90_stacked_fred.jpg)}.i728x90.hal .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/728x90_stacked_hal.jpg)}.i728x90 .frame1{background-position:0 0}.i728x90 .frame2{background-position:0 -90px}.i728x90 .frame3{background-position:0 -180px}.i300x250{width:300px;height:250px;position:relative}.i300x250 .sykbanner_image{width:300px;height:197px;background-repeat:no-repeat}.i300x250 .adScroller{width:298px;height:53px;z-index:99;position:absolute;display:block;right:0;bottom:0}.i300x250.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/300x250_stacked_fred.jpg)}.i300x250.hal .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/300x250_stacked_hal.jpg)}.i300x250 .frame1{background-position:0 0}.i300x250 .frame2{background-position:-300px 0}.i300x250 .frame3{background-position:-600px 0}.i300x600{width:300px;height:600px;position:relative}.i300x600 .sykbanner_image{width:300px;height:528px;background-repeat:no-repeat}.i300x600 .adScroller{width:298px;height:72px;z-index:99;position:absolute;display:block;right:0;bottom:0}.i300x600.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/300x600_stacked_fred.jpg)}.i300x600.hal .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/300x600_stacked_hal.jpg)}.i300x600 .frame1{background-position:0 0}.i300x600 .frame2{background-position:-300px 0}.i300x600 .frame3{background-position:-600px 0}.i400x600{width:400px;height:600px;position:relative}.i400x600 .sykbanner_image{width:400px;height:531px;background-repeat:no-repeat}.i400x600 .adScroller{width:398px;height:69px;z-index:99;position:absolute;display:block;right:0;bottom:0}.i400x600.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/400x600_stacked_fred.jpg)}.i400x600.hal .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/400x600_stacked_hal.jpg)}.i400x600 .frame1{background-position:0 0}.i400x600 .frame2{background-position:-400px 0}.i400x600 .frame3{background-position:-800px 0}.separator{width:100%;height:30px}
+    .adScroller{overflow-y:scroll;background-color:#fff;border:1px solid gray}.adScroller>p,h4{padding:0 10px}p{font-size:11px}.i970x90{width:970px;height:90px;position:relative}.i970x90 .sykbanner_image{width:770px;height:90px;background-repeat:no-repeat}.i970x90>.adScroller{width:200px;height:88px;z-index:99;position:absolute;display:inline-block;right:0;top:0}.i970x90.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/970x90_stacked_fred.jpg)}.i970x90.hal>.sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/970x90_stacked_hal.jpg)}.i970x90 .frame1{background-position:0 0}.i970x90 .frame2{background-position:0 -90px}.i970x90 .frame3{background-position:0 -180px}.i728x270{width:728px;height:270px;position:relative}.i728x270 .sykbanner_image{width:537px;height:270px;background-repeat:no-repeat}.i728x270 .adScroller{width:191px;height:268px;z-index:99;position:absolute;display:inline-block;right:0;top:0}.i728x270.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/728x270_stacked_fred.jpg)}.i728x270.hal .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/728x270_stacked_hal.jpg)}.i728x270 .frame1{background-position:0 0}.i728x270 .frame2{background-position:0 -270px}.i728x270 .frame3{background-position:0 -540px}.i500x250{width:500px;height:250px;position:relative}.i500x250 .sykbanner_image{width:337px;height:250px;background-repeat:no-repeat}.i500x250 .adScroller{width:163px;height:248px;z-index:99;position:absolute;display:inline-block;right:0;top:0}.i500x250.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/500x250_stacked_fred.jpg)}.i500x250.hal .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/500x250_stacked_hal.jpg)}.i500x250 .frame1{background-position:0 0}.i500x250 .frame2{background-position:0 -250px}.i500x250 .frame3{background-position:0 -500px}.i728x90{width:728px;height:90px;position:relative}.i728x90 .sykbanner_image{width:526px;height:90px;background-repeat:no-repeat}.i728x90 .adScroller{width:202px;height:88px;z-index:99;position:absolute;display:inline-block;right:0;top:0}.i728x90.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/728x90_stacked_fred.jpg)}.i728x90.hal .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/728x90_stacked_hal.jpg)}.i728x90 .frame1{background-position:0 0}.i728x90 .frame2{background-position:0 -90px}.i728x90 .frame3{background-position:0 -180px}.i300x250{width:300px;height:250px;position:relative}.i300x250 .sykbanner_image{width:300px;height:197px;background-repeat:no-repeat}.i300x250 .adScroller{width:298px;height:53px;z-index:99;position:absolute;display:block;right:0;bottom:0}.i300x250.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/300x250_stacked_fred.jpg)}.i300x250.hal .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/300x250_stacked_hal.jpg)}.i300x250 .frame1{background-position:0 0}.i300x250 .frame2{background-position:-300px 0}.i300x250 .frame3{background-position:-600px 0}.i300x600{width:300px;height:600px;position:relative}.i300x600 .sykbanner_image{width:300px;height:528px;background-repeat:no-repeat}.i300x600 .adScroller{width:298px;height:72px;z-index:99;position:absolute;display:block;right:0;bottom:0}.i300x600.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/300x600_stacked_fred.jpg)}.i300x600.hal .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/300x600_stacked_hal.jpg)}.i300x600 .frame1{background-position:0 0}.i300x600 .frame2{background-position:-300px 0}.i300x600 .frame3{background-position:-600px 0}.i400x600{width:400px;height:600px;position:relative}.i400x600 .sykbanner_image{width:400px;height:531px;background-repeat:no-repeat}.i400x600 .adScroller{width:398px;height:69px;z-index:99;position:absolute;display:block;right:0;bottom:0}.i400x600.fred .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/400x600_stacked_fred.jpg)}.i400x600.hal .sykbanner_image{background-image:url(http://www.makoplasty.com/assets/images/pga/400x600_stacked_hal.jpg)}.i400x600 .frame1{background-position:0 0}.i400x600 .frame2{background-position:-400px 0}.i400x600 .frame3{background-position:-800px 0}
     </style>
 </head>
 
@@ -37,8 +37,6 @@
     </div>
 <!-- END FRED 970 X 90 -->
 
-    <div class='separator'></div>
-
 <!-- BEGIN HAL 970 X 90 -->
     <div class="boxy hal i970x90">
         <div class="sykbanner_image frame1" id="syk2"></div>
@@ -60,8 +58,6 @@
         </div>
     </div>
 <!-- END HAL 970 X 90 -->
-
-    <div class='separator'></div>
 
 <!-- BEGIN FRED 728 X 270 -->
     <div class="boxy fred i728x270">
@@ -86,8 +82,6 @@
     </div>
 <!-- END FRED 728 X 270 -->
 
-    <div class='separator'></div>
-
 <!-- BEGIN HAL 728 X 270 -->
     <div class="boxy hal i728x270">
         <div class="sykbanner_image frame1" id="syk4"></div>
@@ -109,8 +103,6 @@
         </div>
     </div>
 <!-- END HAL 728 X 270 -->
-
-    <div class='separator'></div>
 
     <!-- BEGIN FRED 500 x 250 -->
     <div class="boxy fred i500x250">
@@ -135,8 +127,6 @@
     </div>
 <!-- END FRED 500 x 250 -->
 
-    <div class='separator'></div>
-
 <!-- BEGIN HAL 500 x 250 -->
     <div class="boxy hal i500x250">
         <div class="sykbanner_image frame1" id="syk6"></div>
@@ -158,8 +148,6 @@
         </div>
     </div>
 <!-- END HAL 500 x 250 -->
-
-    <div class='separator'></div>
 
         <!-- BEGIN FRED 728 x 90 -->
     <div class="boxy fred i728x90">
@@ -184,8 +172,6 @@
     </div>
 <!-- END FRED 728 x 90 -->
 
-    <div class='separator'></div>
-
 <!-- BEGIN HAL 728 x 90 -->
     <div class="boxy hal i728x90">
         <div class="sykbanner_image frame1" id="syk8"></div>
@@ -207,8 +193,6 @@
         </div>
     </div>
 <!-- END HAL 728 x 90 -->
-
-    <div class='separator'></div>
 
             <!-- BEGIN FRED 300 x 250 -->
     <div class="boxy fred i300x250">
@@ -233,8 +217,6 @@
     </div>
 <!-- END FRED 300 x 250 -->
 
-    <div class='separator'></div>
-
 <!-- BEGIN HAL 300 x 250 -->
     <div class="boxy hal i300x250">
         <div class="sykbanner_image frame1" id="syk10"></div>
@@ -256,8 +238,6 @@
         </div>
     </div>
 <!-- END HAL 300 x 250 -->
-
-    <div class='separator'></div>
 
 
 </body>
