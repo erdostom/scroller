@@ -30,7 +30,7 @@ var SYK = {
             return $.inArray($item.attr('id'), SYK.conductor.playing_animations) == -1;
         },
         playItem: function($item) {
-            var $adbox = $item.parent().find('.adScroller');
+            var $adbox = $item.parent().parent().find('.adScroller');
             SYK.disclaimerBox.startScroll($adbox);
             SYK.imageAnimator.loopImage($item);
         }
