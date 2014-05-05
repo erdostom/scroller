@@ -79,10 +79,10 @@ var SYK = {
 $(function() {
     SYK.conductor.$animations = $('.sykbanner_image');
     SYK.conductor.update();
-    $(window).load(function() {
+    $(window).scroll(function() {
         SYK.conductor.update();
     });
-    $(window).scroll(function() {
+    $(window).load(function() {
         SYK.conductor.update();
     });
 });
