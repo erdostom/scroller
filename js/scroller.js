@@ -72,8 +72,11 @@ var SYK = {
     }
 };
 $(function() {
-    SYK.$animations = $('.sykbanner_image');
-    SYK.updateScroll();
+        SYK.$animations = $('.sykbanner_image');
+        SYK.updateScroll();
+    $(window).load(function() {
+        SYK.updateScroll();
+    });
     $(window).scroll(function() {
         SYK.updateScroll();
     });
