@@ -1,5 +1,12 @@
 'use strict';
 var SYK = {
+    loopCount: 1,
+    frame1Length: 3000, // milliseconds
+    frame2Length: 7000, // milliseconds
+    frame3Length: 5000, // milliseconds
+    loopLength: function() {
+        return SYK.frame1Length + SYK.frame2Length + SYK.frame3Length;
+    },
     playing_animations: [],
     $animations: [],
     updateScroll: function() {
@@ -64,11 +71,6 @@ var SYK = {
         });
     }
 };
-SYK.loopCount = 1;
-SYK.frame1Length = 3000; // milliseconds
-SYK.frame2Length = 7000; // milliseconds
-SYK.frame3Length = 5000; // milliseconds
-SYK.loopLength = SYK.frame1Length + SYK.frame2Length + SYK.frame3Length;
 $(function() {
     SYK.$animations = $('.sykbanner_image');
     SYK.updateScroll();
