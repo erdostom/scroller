@@ -1,83 +1,88 @@
 'use strict';
 var SYK = {
-    loopCount: 1,
-    frame1Length: 3000, // milliseconds
-    frame2Length: 7000, // milliseconds
-    frame3Length: 5000, // milliseconds
-    loopLength: function() {
-        return SYK.frame1Length + SYK.frame2Length + SYK.frame3Length;
-    },
-    playing_animations: [],
-    $animations: [],
-    updateScroll: function() {
-        SYK.updateScrollVariables();
-        SYK.logNewItems();
-    },
-    updateScrollVariables: function() {
-        SYK.scrollTop = $(window).scrollTop();
-        SYK.scrollBottom = SYK.scrollTop + $(window).height();
-    },
-    itemInViewport: function($item) {
-        return $item.offset().top < SYK.scrollBottom;
-    },
-    itemNotPlayedYet: function($item) {
-        return $.inArray($item.attr('id'), SYK.playing_animations) == -1;
-    },
-    shouldPlayItem: function($item) {
-        return SYK.itemInViewport($item) && SYK.itemNotPlayedYet($item);
-    },
-    loopImage: function($item) {
-        for (var i = 1; i <= SYK.loopCount; i++) {
-            window.setTimeout(function() {
-                SYK.rotate($item, 'frame2');
-            }, SYK.frame1Length + SYK.loopLength * (i - 1));
-            window.setTimeout(function() {
-                SYK.rotate($item, 'frame3');
-            }, SYK.frame1Length + SYK.frame2Length + SYK.loopLength * (i - 1));
-            if (i < SYK.loopCount) {
-                window.setTimeout(function() {
-                    SYK.rotate($item, 'frame1');
-                }, SYK.loopLength + SYK.loopLength * (i - 1));
-            }
+    conductor: {
+        $animations: [],
+        playing_animations: [],
+        update: function() {
+            SYK.conductor.updateScrollVariables();
+            SYK.conductor.checkForNewItems();
+        },
+        updateScrollVariables: function() {
+            SYK.conductor.scrollTop = $(window).scrollTop();
+            SYK.conductor.scrollBottom = SYK.conductor.scrollTop + $(window).height();
+        },
+        checkForNewItems: function() {
+            SYK.conductor.$animations.each(function() {
+                var that = $(this);
+                if (SYK.conductor.shouldPlayItem(that)) {
+                    SYK.conductor.playing_animations.push(that.attr('id'));
+                    SYK.conductor.playItem(that);
+                }
+            });
+        },
+        shouldPlayItem: function($item) {
+            return SYK.conductor.itemInViewport($item) && SYK.conductor.itemNotPlayedYet($item);
+        },
+        itemInViewport: function($item) {
+            return $item.offset().top < SYK.conductor.scrollBottom;
+        },
+        itemNotPlayedYet: function($item) {
+            return $.inArray($item.attr('id'), SYK.conductor.playing_animations) == -1;
+        },
+        playItem: function($item) {
+            var $adbox = $item.parent().find('.adScroller');
+            SYK.disclaimerBox.startScroll($adbox);
+            SYK.imageAnimator.loopImage($item);
         }
     },
-    playItem: function($item) {
-        var $adbox = $item.parent().find('.adScroller');
-        SYK.startScroll($adbox);
-        SYK.loopImage($item);
-    },
-    logNewItems: function() {
-        SYK.$animations.each(function() {
-            var that = $(this);
-            if (SYK.shouldPlayItem(that)) {
-                SYK.playing_animations.push(that.attr('id'));
-                SYK.playItem(that);
-
+    imageAnimator: {
+        loopCount: 1,
+        frame1Length: 3000, // milliseconds
+        frame2Length: 7000, // milliseconds
+        frame3Length: 5000, // milliseconds
+        loopLength: function() {
+            return SYK.imageAnimator.frame1Length + SYK.imageAnimator.frame2Length + SYK.imageAnimator.frame3Length;
+        },
+        loopImage: function($item) {
+            for (var i = 1; i <= SYK.imageAnimator.loopCount; i++) {
+                window.setTimeout(function() {
+                    SYK.imageAnimator.rotate($item, 'frame2');
+                }, SYK.imageAnimator.frame1Length + SYK.imageAnimator.loopLength() * (i - 1));
+                window.setTimeout(function() {
+                    SYK.imageAnimator.rotate($item, 'frame3');
+                }, SYK.imageAnimator.frame1Length + SYK.imageAnimator.frame2Length + SYK.imageAnimator.loopLength() * (i - 1));
+                if (i < SYK.imageAnimator.loopCount) {
+                    window.setTimeout(function() {
+                        SYK.imageAnimator.rotate($item, 'frame1');
+                    }, SYK.imageAnimator.loopLength() + SYK.imageAnimator.loopLength() * (i - 1));
+                }
             }
-        });
+        },
+        rotate: function(banner, newframe) {
+            banner.removeClass('frame1 frame2 frame3');
+            banner.addClass(newframe);
+        }
     },
-    rotate: function(banner, newframe) {
-        banner.removeClass('frame1 frame2 frame3');
-        banner.addClass(newframe);
-    },
-    startScroll: function($scroller) {
-        var startScroll = setInterval(function() {
-            var pos = $scroller.scrollTop();
-            $scroller.scrollTop(pos + 2);
-        }, $scroller.data('speed'));
+    disclaimerBox: {
+        startScroll: function($scroller) {
+            var startScroll = setInterval(function() {
+                var pos = $scroller.scrollTop();
+                $scroller.scrollTop(pos + 2);
+            }, $scroller.data('speed'));
 
-        $scroller.mouseover(function() {
-            clearInterval(startScroll);
-        });
+            $scroller.mouseover(function() {
+                clearInterval(startScroll);
+            });
+        }
     }
 };
 $(function() {
-        SYK.$animations = $('.sykbanner_image');
-        SYK.updateScroll();
+    SYK.conductor.$animations = $('.sykbanner_image');
+    SYK.conductor.update();
     $(window).load(function() {
-        SYK.updateScroll();
+        SYK.conductor.update();
     });
     $(window).scroll(function() {
-        SYK.updateScroll();
+        SYK.conductor.update();
     });
 });
