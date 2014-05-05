@@ -19,7 +19,7 @@ p {
     height: 90px;
     background-repeat: no-repeat;
 }
-.i970x90 > .adScroller {
+.i970x90 .adScroller {
     width: 200px;
     height: 88px;
     z-index: 99;
@@ -31,7 +31,7 @@ p {
 .i970x90.fred .sykbanner_image {
     background-image: url(http://www.makoplasty.com/assets/images/pga/970x90_stacked_fred.jpg);
 }
-.i970x90.hal > .sykbanner_image {
+.i970x90.hal .sykbanner_image {
     background-image: url(http://www.makoplasty.com/assets/images/pga/970x90_stacked_hal.jpg);
 }
 .i970x90 .frame1 {
