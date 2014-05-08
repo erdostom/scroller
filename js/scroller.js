@@ -37,8 +37,8 @@ var SYK = {
     },
     imageAnimator: {
         loopCount: 1,
-        frame1Length: 3000, // milliseconds
-        frame2Length: 7000, // milliseconds
+        frame1Length: 5000, // milliseconds
+        frame2Length: 10000, // milliseconds
         frame3Length: 5000, // milliseconds
         loopLength: function() {
             return SYK.imageAnimator.frame1Length + SYK.imageAnimator.frame2Length + SYK.imageAnimator.frame3Length;
