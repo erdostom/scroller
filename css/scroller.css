@@ -247,3 +247,37 @@ p {
 .i400x600 .frame3 {
     background-position:-800px 0
 }
+.i320x50 {
+    width:320px;
+    height:50px;
+    position:relative
+}
+.i320x50 .sykbanner_image {
+    width:248px;
+    height:50px;
+    background-repeat:no-repeat
+}
+.i320x50 .adScroller {
+    width:72px;
+    height:48px;
+    z-index:99;
+    position:absolute;
+    display:block;
+    right:0;
+    bottom:0
+}
+.i320x50.fred .sykbanner_image {
+    background-image:url(http://www.makoplasty.com/assets/images/pga/320x50_stacked_fred.jpg)
+}
+.i320x50.hal .sykbanner_image {
+    background-image:url(http://www.makoplasty.com/assets/images/pga/320x50_stacked_hal.jpg)
+}
+.i320x50 .frame1 {
+    background-position:0 0
+}
+.i320x50 .frame2 {
+    background-position:-320px 0
+}
+.i320x50 .frame3 {
+    background-position:-640px 0
+}
